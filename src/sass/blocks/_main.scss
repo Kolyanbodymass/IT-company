@@ -1,3 +1,26 @@
  .main {
-    background: url('../../img/bg/main-bg.jpg')  center (center / cover) no-repeat
+    padding-top: 40px;
+    height: 900px;
+	background: url('../../img/bg/main-bg.jpg')  center (center / cover) no-repeat;
+	text-align: center;
+		&__subtitle {
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 20px;
+			text-align: center;
+			color: #FFFFFF;
+			padding-bottom: 20px;
+		}
+		&__title {
+			font-family: Montserrat, sans-serif;
+			max-width: 829px;
+			margin: 0 auto;
+			font-weight: 800;
+			font-size: 48px;
+			line-height: 64px;
+			text-align: center;
+			color: #FFFFFF;
+			padding-bottom: 50px;
+		}
+
  }

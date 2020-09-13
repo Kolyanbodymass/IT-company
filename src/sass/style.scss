@@ -3,8 +3,12 @@
 
 
 *{
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
 }
 
 .container {
@@ -13,3 +17,5 @@
 }
 
 @import 'blocks/main';
+@import 'blocks/menu';
+@import 'blocks/button';

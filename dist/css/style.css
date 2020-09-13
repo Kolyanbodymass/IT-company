@@ -469,9 +469,9 @@ textarea {
 /* montserrat-regular - latin_cyrillic */
 
 @font-face {
-  font-family: 'Montserrat';
+  font-family: 'Montserrat Regular';
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
   src: url("../fonts/montserrat-v14-latin_cyrillic-regular.eot");
   /* IE9 Compat Modes */
   src: local("Montserrat Regular"), local("Montserrat-Regular"), url("../fonts/montserrat-v14-latin_cyrillic-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat-v14-latin_cyrillic-regular.woff2") format("woff2"), url("../fonts/montserrat-v14-latin_cyrillic-regular.woff") format("woff"), url("../fonts/montserrat-v14-latin_cyrillic-regular.ttf") format("truetype"), url("../fonts/montserrat-v14-latin_cyrillic-regular.svg#Montserrat") format("svg");
@@ -481,9 +481,9 @@ textarea {
 /* montserrat-500 - latin_cyrillic */
 
 @font-face {
-  font-family: 'Montserrat';
+  font-family: 'Montserrat 500';
   font-style: normal;
-  font-weight: 500;
+  font-weight: normal;
   src: url("../fonts/montserrat-v14-latin_cyrillic-500.eot");
   /* IE9 Compat Modes */
   src: local("Montserrat Medium"), local("Montserrat-Medium"), url("../fonts/montserrat-v14-latin_cyrillic-500.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat-v14-latin_cyrillic-500.woff2") format("woff2"), url("../fonts/montserrat-v14-latin_cyrillic-500.woff") format("woff"), url("../fonts/montserrat-v14-latin_cyrillic-500.ttf") format("truetype"), url("../fonts/montserrat-v14-latin_cyrillic-500.svg#Montserrat") format("svg");
@@ -493,9 +493,9 @@ textarea {
 /* montserrat-800 - latin_cyrillic */
 
 @font-face {
-  font-family: 'Montserrat';
+  font-family: 'Montserrat 800';
   font-style: normal;
-  font-weight: 800;
+  font-weight: normal;
   src: url("../fonts/montserrat-v14-latin_cyrillic-800.eot");
   /* IE9 Compat Modes */
   src: local("Montserrat ExtraBold"), local("Montserrat-ExtraBold"), url("../fonts/montserrat-v14-latin_cyrillic-800.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat-v14-latin_cyrillic-800.woff2") format("woff2"), url("../fonts/montserrat-v14-latin_cyrillic-800.woff") format("woff"), url("../fonts/montserrat-v14-latin_cyrillic-800.ttf") format("truetype"), url("../fonts/montserrat-v14-latin_cyrillic-800.svg#Montserrat") format("svg");
@@ -505,9 +505,9 @@ textarea {
 /* montserrat-900 - latin_cyrillic */
 
 @font-face {
-  font-family: 'Montserrat';
+  font-family: 'Montserrat 900';
   font-style: normal;
-  font-weight: 900;
+  font-weight: normal;
   src: url("../fonts/montserrat-v14-latin_cyrillic-900.eot");
   /* IE9 Compat Modes */
   src: local("Montserrat Black"), local("Montserrat-Black"), url("../fonts/montserrat-v14-latin_cyrillic-900.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat-v14-latin_cyrillic-900.woff2") format("woff2"), url("../fonts/montserrat-v14-latin_cyrillic-900.woff") format("woff"), url("../fonts/montserrat-v14-latin_cyrillic-900.ttf") format("truetype"), url("../fonts/montserrat-v14-latin_cyrillic-900.svg#Montserrat") format("svg");
@@ -515,8 +515,12 @@ textarea {
 }
 
 * {
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
 }
 
 .container {
@@ -525,5 +529,71 @@ textarea {
 }
 
 .main {
+  padding-top: 40px;
+  height: 900px;
   background: url("../../img/bg/main-bg.jpg") center center/cover no-repeat;
+  text-align: center;
+}
+
+.main__subtitle {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFFFFF;
+  padding-bottom: 20px;
+}
+
+.main__title {
+  font-family: Montserrat, sans-serif;
+  max-width: 829px;
+  margin: 0 auto;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 64px;
+  text-align: center;
+  color: #FFFFFF;
+  padding-bottom: 50px;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  height: 61px;
+  margin-bottom: 220px;
+}
+
+.menu li {
+  margin-right: 40px;
+}
+
+.menu li:last-child {
+  margin-right: 0;
+}
+
+.menu li a {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+
+.menu li:hover {
+  color: #ec644b;
+  border-bottom: 2px solid #FFFFFF;
+  padding-bottom: 39px;
+}
+
+button {
+  background: #4985FF;
+  box-shadow: 0px 0px 10px rgba(111, 111, 111, 0.25);
+  border-radius: 30px;
+  border: none;
+  width: 200px;
+  height: 45px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFFFFF;
 }

@@ -77,9 +77,6 @@ gulp.task('images', function() {
         .pipe(gulp.dest("dist/img"));
 });
 
-
-// gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'html', 'scripts', 'fonts', 'icons', 'mailer', 'images'));
-
 gulp.task("build", gulp.series('delDir', gulp.parallel('server', 'styles', 'html', 'scripts', 'fonts', 'icons', 'mailer', 'images')));
 gulp.task("default", gulp.parallel("watch", "build"));
 
