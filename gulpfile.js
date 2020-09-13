@@ -6,6 +6,8 @@ const autoprefixer = require('gulp-autoprefixer');
 const rename = require("gulp-rename");
 const imagemin = require('gulp-imagemin');
 const htmlmin = require('gulp-htmlmin');
+const del = require('del');
+const group_media = require('gulp-group-css-media-queries');
 
 gulp.task('server', function() {
 
@@ -20,9 +22,12 @@ gulp.task('server', function() {
 
 gulp.task('styles', function() {
     return gulp.src("src/sass/**/*.+(scss|sass)")
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer())
+        .pipe(group_media())
+        .pipe(gulp.dest("dist/css"))
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(rename({suffix: '.min', prefix: ''}))
-        .pipe(autoprefixer())
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest("dist/css"))
         .pipe(browserSync.stream());
@@ -35,8 +40,15 @@ gulp.task('watch', function() {
 
 gulp.task('html', function() {
     return gulp.src("src/*.html")
+        .pipe(rename({suffix: '.not-compressed', prefix: ''}))
+        .pipe(gulp.dest("dist/"))
         .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(rename({basename: "index", extname: ".html"}))
         .pipe(gulp.dest("dist/"));
+});
+
+gulp.task('delDir', async () => {
+    await del('./dist/');
 });
 
 gulp.task('scripts', function() {
@@ -65,4 +77,9 @@ gulp.task('images', function() {
         .pipe(gulp.dest("dist/img"));
 });
 
-gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'html', 'scripts', 'fonts', 'icons', 'mailer', 'images'));
+
+// gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'html', 'scripts', 'fonts', 'icons', 'mailer', 'images'));
+
+gulp.task("build", gulp.series('delDir', gulp.parallel('server', 'styles', 'html', 'scripts', 'fonts', 'icons', 'mailer', 'images')));
+gulp.task("default", gulp.parallel("watch", "build"));
+

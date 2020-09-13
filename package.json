@@ -1,5 +1,5 @@
 {
-  "name": "pulse",
+  "name": "IT-company",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -9,14 +9,25 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
     "browser-sync": "^2.26.5",
+    "core-js": "^3.4.2",
+    "eslint": "^7.4.0",
+    "eslint-plugin-react": "^7.20.3",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^6.1.0",
     "gulp-clean-css": "^4.2.0",
     "gulp-cli": "^2.2.0",
+    "gulp-group-css-media-queries": "^1.2.2",
     "gulp-imagemin": "^7.1.0",
     "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.0.2"
+    "gulp-sass": "^4.0.2",
+    "webpack": "^4.41.2",
+    "webpack-stream": "^5.2.1"
   },
   "browserslist": [
     "last 1 version",
@@ -26,6 +37,8 @@
   ],
   "dependencies": {
     "def": "0.0.8",
+    "del": "^5.1.0",
+    "eslint-plugin-babel": "^5.3.1",
     "gulp-htmlmin": "^5.0.1"
   }
 }

@@ -1,0 +1,15 @@
+@import 'base/reset';
+@import 'libs/fonts';
+
+
+*{
+    font-family: 'Montserrat';
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+@import 'blocks/main';
