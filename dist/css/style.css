@@ -597,3 +597,5 @@ button {
   text-align: center;
   color: #FFFFFF;
 }
+
+.webp .main { background: url(../../img/bg/main-bg.webp) center center/cover no-repeat; }
