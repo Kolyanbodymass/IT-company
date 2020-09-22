@@ -1,9 +1,10 @@
 @import 'base/reset';
 @import 'libs/fonts';
+@import 'libs/animate';
 
 
 *{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif!important;
     box-sizing: border-box;
 }
 
@@ -16,6 +17,15 @@ a {
     margin: 0 auto;
 }
 
+h2 {
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 53px;
+    text-align: center;
+}
+
 @import 'blocks/main';
 @import 'blocks/menu';
 @import 'blocks/button';
+@import 'blocks/mobile-applications';
+@import 'blocks/standards';

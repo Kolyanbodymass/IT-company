@@ -29,7 +29,7 @@ gulp.task('styles', function() {
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(group_media())
-        .pipe(webpcss())
+        .pipe(webpcss({webpClass: '.webp', noWebpClass: '.no-webp'}))
         .pipe(gulp.dest("dist/css"))
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(rename({suffix: '.min', prefix: ''}))
@@ -57,11 +57,6 @@ gulp.task('html', function() {
 
 gulp.task('delDir', async () => {
     await del('./dist/');
-});
-
-gulp.task('scripts', function() {
-    return gulp.src("src/js/**/*.js")
-        .pipe(gulp.dest("dist/js"));
 });
 
 gulp.task('fonts', function() {
@@ -119,7 +114,7 @@ gulp.task("build-js", () => {
                       }
                 }))
                 .pipe(gulp.dest('./dist/'))
-                .pipe(browserSync.stream());
+                .on("end", browserSync.reload);
 });
 
 gulp.task("build-prod-js", () => {
@@ -150,6 +145,7 @@ gulp.task("build-prod-js", () => {
                 .pipe(gulp.dest('./dist/js/'));
 });
 
-gulp.task("build", gulp.series('delDir', gulp.parallel('server', 'styles', 'html', 'scripts', 'fonts', 'mailer', 'images'), "build-js"));
+gulp.task("base", gulp.parallel('server', 'html', 'images', 'styles', 'fonts', 'mailer', ));
+gulp.task("build", gulp.series('delDir', gulp.parallel('base', 'build-js')));
 gulp.task("default", gulp.parallel("watch", "build"));
 

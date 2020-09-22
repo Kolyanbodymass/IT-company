@@ -41,6 +41,7 @@
     "not dead"
   ],
   "dependencies": {
+    "animate.css": "^4.1.1",
     "def": "0.0.8",
     "del": "^5.1.0",
     "eslint-plugin-babel": "^5.3.1",
