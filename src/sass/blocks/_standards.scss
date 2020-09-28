@@ -23,6 +23,7 @@
         font-size: 16px;
         line-height: 20px;
         text-decoration-line: underline;
+        color: #4985FF;
     }
     &__text {
         max-width: 500px;
@@ -40,12 +41,6 @@
             transform:translate(-50%,-50%);
             border-radius: 30px;
         }
-    }
-    &__hr-line {
-        background-color: #E0E0E0;
-        height: 1px;
-        width: 100%;
-        margin-bottom: 70px;
     }
     &__projects-items {
         display: flex;
@@ -73,11 +68,13 @@
         color: #999999;
     }
     &__desc-scan {
-        display: none;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: opacity 0.5s, max-height 0.6s, padding 0.1s;
         font-weight: 400;
         font-size: 16px;
         line-height: 25px;
         color: #999999;
-        margin-bottom: 30px;
     }
 }

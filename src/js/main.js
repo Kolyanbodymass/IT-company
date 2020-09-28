@@ -1,3 +1,5 @@
+import accordion from './blocks/accordion';
+
 // Добавление класса с WEBP изображениями, если их поддерживает браузер
 function testWebP(callback) {
     let webP = new Image();
@@ -15,23 +17,10 @@ testWebP(function(support) {
 window.addEventListener('DOMContentLoaded', () => {
 
     // accordion
-    const link = document.querySelector('.standards__link'),
-          text = document.querySelector('.standards__desc-scan');
+    'use strict';
 
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
+    accordion('[data-trigger]');
 
-        if (window.getComputedStyle(text).display == "none") {
-            text.classList.add('animate__animated');
-            text.classList.remove('animate__fadeOut');
-            text.classList.add('animate__fadeIn');
-            text.style.display = "block";
-        } else {
-            text.classList.remove('animate__fadeIn');
-            text.classList.add('animate__fadeOut');
-            text.style.display = "none";
-        }
-    });
 
 
 });

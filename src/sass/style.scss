@@ -12,6 +12,8 @@ a {
     text-decoration: none;
 }
 
+a:active, a:focus { outline: none; }
+
 .container {
     max-width: 1110px;
     margin: 0 auto;
@@ -24,8 +26,22 @@ h2 {
     text-align: center;
 }
 
+.hr {
+    background-color: #E0E0E0;
+    height: 1px;
+    width: 100%;
+    margin-bottom: 70px;
+}
+
 @import 'blocks/main';
 @import 'blocks/menu';
 @import 'blocks/button';
 @import 'blocks/mobile-applications';
 @import 'blocks/standards';
+@import 'blocks/our-work';
+
+.active {
+    overflow: visible;
+    opacity: 1;
+    margin-bottom: 30px;
+}
