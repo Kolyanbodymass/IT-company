@@ -43,6 +43,6 @@ const accordion = (trigger) => {
             }
         });
     });
-}
+};
 
 export default accordion;

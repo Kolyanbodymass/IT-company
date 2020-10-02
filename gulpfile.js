@@ -7,10 +7,10 @@ const rename = require("gulp-rename");
 const imagemin = require('gulp-imagemin');
 const htmlmin = require('gulp-htmlmin');
 const del = require('del');
-const group_media = require('gulp-group-css-media-queries');
-const webp = require('gulp-webp');
-const webphtml = require('gulp-webp-html');
-const webpcss = require("gulp-webpcss");
+const groupMedia = require('gulp-group-css-media-queries');
+// const webp = require('gulp-webp');
+// const webphtml = require('gulp-webp-html');
+// const webpcss = require("gulp-webpcss");
 const webpack = require("webpack-stream");
 
 gulp.task('server', function() {
@@ -28,8 +28,8 @@ gulp.task('styles', function() {
     return gulp.src("src/sass/**/*.+(scss|sass)")
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
-        .pipe(group_media())
-        .pipe(webpcss({webpClass: '.webp', noWebpClass: '.no-webp'}))
+        .pipe(groupMedia())
+        // .pipe(webpcss({webpClass: '.webp', noWebpClass: '.no-webp'}))
         .pipe(gulp.dest("dist/css"))
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(rename({suffix: '.min', prefix: ''}))
@@ -47,7 +47,7 @@ gulp.task('watch', function() {
 
 gulp.task('html', function() {
     return gulp.src("src/*.html")
-        .pipe(webphtml())
+        // .pipe(webphtml())
         .pipe(rename({suffix: '.not-compressed', prefix: ''}))
         .pipe(gulp.dest("dist/"))
         .pipe(htmlmin({ collapseWhitespace: true }))
@@ -64,16 +64,11 @@ gulp.task('fonts', function() {
         .pipe(gulp.dest("dist/fonts"));
 });
 
-gulp.task('mailer', function() {
-    return gulp.src("src/mailer/**/*")
-        .pipe(gulp.dest("dist/mailer"));
-});
-
 gulp.task('images', function() {
     return gulp.src("src/img/**/*")
-        .pipe(webp({
-            quality: 70
-        }))
+        // .pipe(webp({
+        //     quality: 70
+        // }))
         .pipe(gulp.dest("dist/img"))
         .pipe(gulp.src("src/img/**/*"))
         .pipe(imagemin({
@@ -145,7 +140,6 @@ gulp.task("build-prod-js", () => {
                 .pipe(gulp.dest('./dist/js/'));
 });
 
-gulp.task("base", gulp.parallel('server', 'html', 'images', 'styles', 'fonts', 'mailer', ));
-gulp.task("build", gulp.series('delDir', gulp.parallel('base', 'build-js')));
-gulp.task("default", gulp.parallel("watch", "build"));
+gulp.task("build", gulp.series('delDir', gulp.parallel('images', 'styles', 'fonts', 'html', 'server', 'build-js')));
+gulp.task("default", gulp.parallel("build", "watch"));
 
