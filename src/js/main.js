@@ -1,4 +1,5 @@
 import accordion from './blocks/accordion';
+import Navigation from './blocks/navBar';
 
 // Добавление класса с WEBP изображениями, если их поддерживает браузер
 function testWebP(callback) {
@@ -20,7 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
     accordion('[data-trigger]');
-
-
+    
+    new Navigation().init();
 
 });

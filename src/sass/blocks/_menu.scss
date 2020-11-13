@@ -1,23 +1,27 @@
 .menu {
-    display: flex;
-    justify-content: flex-end;
-    height: 61px;
-    margin-bottom: 220px;
-    li {
-        margin-right: 40px;
-        &:last-child {
-            margin-right: 0;
-        }
-        a {
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 20px;
-            color: #FFFFFF;
-        }
-        &:hover {
-            color: #ec644b;
-            border-bottom: 2px solid #FFFFFF;
-            padding-bottom: 39px;
+    position: absolute;
+    right: 0;
+    &-ul {
+        display: flex;
+        justify-content: flex-end;
+        height: 61px;
+        li {
+            margin-right: 40px;
+            &:last-child {
+                margin-right: 0;
+            }
+            a {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 20px;
+                color: #FFFFFF;
+            }
+            &:hover {
+                color: #ec644b;
+                border-bottom: 2px solid #FFFFFF;
+                padding-bottom: 39px;
+            }
         }
     }
 }
+

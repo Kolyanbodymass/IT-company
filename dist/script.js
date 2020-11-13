@@ -1630,6 +1630,191 @@ var accordion = function accordion(trigger) {
 
 /***/ }),
 
+/***/ "./src/js/blocks/navBar.js":
+/*!*********************************!*\
+  !*** ./src/js/blocks/navBar.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Navigation; });
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Navigation = /*#__PURE__*/function () {
+  function Navigation() {
+    _classCallCheck(this, Navigation);
+
+    this.navTrigger = document.querySelector('.nav__trigger');
+    this.nav = document.querySelector('.nav');
+    this.navItems = document.querySelectorAll('.nav__item a');
+    this.main = document.querySelector('.wrapper-nav');
+    this.transitionEnd = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
+    this.isOpeningNav = false;
+  }
+
+  _createClass(Navigation, [{
+    key: "openNavigation",
+    value: function openNavigation() {
+      this.navTrigger.classList.add('is-active'); // body froze
+
+      document.body.classList.add('is-froze'); // Remove old inline styles
+
+      if (this.main.style.removeProperty) {
+        this.main.style.removeProperty('overflow');
+        this.main.style.removeProperty('height');
+      } else {
+        this.main.style.removeAttribute('overflow');
+        this.main.style.removeAttribute('height');
+      } // .main active
+
+
+      this.main.classList.add('is-active');
+    }
+  }, {
+    key: "closeNavigation",
+    value: function closeNavigation() {
+      this.navTrigger.classList.remove('is-active'); // .main inactive
+
+      this.main.classList.remove('is-active'); // this.main.addEventListener('transitionend', (e) => {
+      //     if (e.propertyName == 'transform' && !this.navTrigger.classList.contains('is-active')) {
+      //         // Reset overflow and height
+      //         this.main.style.overflow = 'auto';
+      //         this.main.style.height = 'auto';
+      //         // body unfroze
+      //         document.body.classList.remove('is-froze');
+      //     }
+      // });
+      // no-csstransitions fallback
+
+      if (document.documentElement.classList.contains('no-csstransitions')) {
+        // .main inactive
+        this.main.classList.remove('is-active'); // body unfroze
+
+        document.body.classList.remove('is-froze');
+      }
+    } // transitionPage(link) {
+    //     this.main.classList.add('is-transition-out');
+    //     this.main.addEventListener('transitionend', (e) => {
+    //         if (e.propertyName == 'clip-path') {
+    //             if (this.main.classList.contains('is-transition-in')) {
+    //                 this.main.classList.remove('is-transition-in');
+    //                 this.main.classList.remove('is-transition-out');
+    //                 this.closeNavigation();
+    //             }
+    //             if (this.main.classList.contains('is-transition-out')) {
+    //                 this.main.classList.remove('is-transition-out');
+    //                 setTimeout(() => {
+    //                     this.main.classList.add('is-transition-in');
+    //                     this.main.style.overflow = 'auto';
+    //                 }, 500);
+    //             }
+    //         }
+    //     });
+    //     document.location.href = (link);
+    // }
+
+  }, {
+    key: "init",
+    value: function init() {
+      var _this = this;
+
+      this.main.style.overflow = 'auto'; //Handle scroll events
+
+      window.addEventListener('scroll', function (e) {
+        if (window.scrollY == 0 && _this.isOpeningNav) {
+          _this.isOpeningNav = false; // Add a small delay
+
+          setTimeout(function () {
+            _this.openNavigation();
+          }, 150);
+        }
+      });
+      this.navTrigger.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        if (!_this.navTrigger.classList.contains('is-active')) {
+          if (window.scrollY !== 0) {
+            // Scroll to top
+            window.scroll({
+              top: 0,
+              left: 0,
+              behavior: 'smooth'
+            }); // Enable opening nav
+
+            _this.isOpeningNav = true;
+          } else {
+            _this.openNavigation();
+          }
+        } else {
+          _this.closeNavigation();
+        }
+      }); // Handle .nav__item click events
+
+      this.navItems.forEach(function (navLink) {
+        navLink.addEventListener('click', function (e) {
+          e.preventDefault(); // Remove is-active from all .nav__items
+
+          _this.navItems.forEach(function (el) {
+            el.classList.remove('is-active');
+          }); // // Ad is-active to clicked .nav__item
+          // navLink.classList.add('is-active');
+          // Transition the page
+
+
+          var link = navLink.href; // this.transitionPage(link);
+
+          _this.main.classList.add('is-transition-out');
+
+          _this.main.addEventListener('transitionend', function (e) {
+            if (e.propertyName == 'clip-path') {
+              if (_this.main.classList.contains('is-transition-in')) {
+                _this.main.classList.remove('is-transition-in');
+
+                _this.main.classList.remove('is-transition-out');
+
+                _this.closeNavigation();
+              }
+
+              if (_this.main.classList.contains('is-transition-out')) {
+                _this.main.classList.remove('is-transition-out');
+
+                setTimeout(function () {
+                  _this.main.classList.add('is-transition-in');
+
+                  _this.main.style.overflow = 'auto';
+                }, 500);
+              }
+            }
+          });
+
+          setTimeout(function () {
+            document.location.href = link;
+          }, 500);
+        });
+      });
+    }
+  }]);
+
+  return Navigation;
+}();
+
+
+
+/***/ }),
+
 /***/ "./src/js/main.js":
 /*!************************!*\
   !*** ./src/js/main.js ***!
@@ -1640,6 +1825,8 @@ var accordion = function accordion(trigger) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_accordion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks/accordion */ "./src/js/blocks/accordion.js");
+/* harmony import */ var _blocks_navBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blocks/navBar */ "./src/js/blocks/navBar.js");
+
  // Добавление класса с WEBP изображениями, если их поддерживает браузер
 
 function testWebP(callback) {
@@ -1662,6 +1849,7 @@ window.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
   Object(_blocks_accordion__WEBPACK_IMPORTED_MODULE_0__["default"])('[data-trigger]');
+  new _blocks_navBar__WEBPACK_IMPORTED_MODULE_1__["default"]().init();
 });
 
 /***/ })

@@ -17,6 +17,7 @@ a:active, a:focus { outline: none; }
 .container {
     max-width: 1110px;
     margin: 0 auto;
+    position: relative;
 }
 
 h2 {
@@ -50,3 +51,7 @@ h2 {
 @import 'blocks/video';
 @import 'blocks/mailing';
 @import 'blocks/footer';
+
+@import 'blocks/nav-bar';
+
+@import 'blocks/media';
